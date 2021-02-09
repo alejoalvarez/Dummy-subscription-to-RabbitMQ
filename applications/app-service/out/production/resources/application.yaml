@@ -1,0 +1,29 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: ms_subscription
+  devtools:
+    add-properties: false
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  profiles:
+    include:
+  jackson:
+    default-property-inclusion: NON_NULL
+  rabbitmq:
+    host: ${RABBIT_HOST}
+    port: 5672
+    username: ${RABBIT_USERNAME}
+    password: ${RABBIT_PASSWORD}
+    virtualHost: /
+
+app:
+  async:
+    withDLQRetry: false
+    retryDelay: 1000
+    maxRetries: 10
+
